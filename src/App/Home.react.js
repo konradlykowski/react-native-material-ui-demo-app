@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { PropTypes } from 'prop-types';
-import { ToastAndroid, ScrollView, Platform, Animated, Easing } from 'react-native';
+import React, {Component} from 'react';
+import {PropTypes} from 'prop-types';
+import {ToastAndroid, ScrollView, Platform, Animated, Easing, View} from 'react-native';
 
 import routes from '../routes';
 
@@ -14,6 +14,7 @@ import {
     BottomNavigation,
     Icon,
 } from '../react-native-material-ui/src';
+import ProfileView from "../ProfileView";
 
 const UP = 1;
 const DOWN = -1;
@@ -39,8 +40,9 @@ class Home extends Component {
             moveAnimated: new Animated.Value(0),
         };
     }
+
     onAvatarPressed = (value) => {
-        const { selected } = this.state;
+        const {selected} = this.state;
 
         const index = selected.indexOf(value);
 
@@ -52,7 +54,7 @@ class Home extends Component {
             selected.push(value);
         }
 
-        this.setState({ selected });
+        this.setState({selected});
     }
     onScroll = (ev) => {
         const currentOffset = ev.nativeEvent.contentOffset.y;
@@ -72,7 +74,7 @@ class Home extends Component {
             this.scrollDirection = currentDirection;
 
             this.setState({
-                bottomHidden: currentDirection === DOWN,
+                bottomHidden: currentDirection === UP,
             });
         }
     }
@@ -98,14 +100,14 @@ class Home extends Component {
                 <Toolbar
                     key="toolbar"
                     leftElement="clear"
-                    onLeftElementPress={() => this.setState({ selected: [] })}
+                    onLeftElementPress={() => this.setState({selected: []})}
                     centerElement={this.state.selected.length.toString()}
                     rightElement={['delete']}
                     style={{
-                        container: { backgroundColor: 'white' },
-                        titleText: { color: 'rgba(0,0,0,.87)' },
-                        leftElement: { color: 'rgba(0,0,0,.54)' },
-                        rightElement: { color: 'rgba(0,0,0,.54)' },
+                        container: {backgroundColor: 'red'},
+                        titleText: {color: 'red'},
+                        leftElement: {color: 'red'},
+                        rightElement: {color: 'red'},
                     }}
                 />
             );
@@ -113,18 +115,75 @@ class Home extends Component {
         return (
             <Toolbar
                 key="toolbar"
-                leftElement="menu"
+                leftElement=""
                 onLeftElementPress={() => this.props.navigation.goBack()}
-                centerElement="Home"
+                centerElement="Hello, Super Mama!"
                 searchable={{
+
                     autoFocus: true,
-                    placeholder: 'Search',
-                    onChangeText: value => this.setState({ searchText: value }),
-                    onSearchClosed: () => this.setState({ searchText: '' }),
+                    placeholder: 'Talk to Super Mama...',
+                    onChangeText: value => this.setState({searchText: value}),
+                    onSearchClosed: () => this.setState({searchText: ''}),
                 }}
             />
         );
     }
+
+    renderAllTheMamas = () => {
+        return <ScrollView
+            keyboardShouldPersistTaps="always"
+            keyboardDismissMode="interactive"
+            onScroll={this.onScroll}
+        >
+            {this.renderItem('Mom1', 'actionButton')}
+            {this.renderItem('Mom1', 'actionButton')}
+            {this.renderItem('Mom1', 'actionButton')}
+            {this.renderItem('Mom1', 'actionButton')}
+            {this.renderItem('Mom1', 'actionButton')}
+            {this.renderItem('Mom1', 'actionButton')}
+            {this.renderItem('Mom1', 'actionButton')}
+            {this.renderItem('Mom1', 'actionButton')}
+            {this.renderItem('Mom1', 'actionButton')}
+            {this.renderItem('Mom1', 'actionButton')}
+            {this.renderItem('Mom1', 'actionButton')}
+            {this.renderItem('Mom1', 'actionButton')}
+            {this.renderItem('Mom1', 'actionButton')}
+            {this.renderItem('Mom1', 'actionButton')}
+            {this.renderItem('Mom1', 'actionButton')}
+            {this.renderItem('Mom1', 'actionButton')}
+
+
+
+        </ScrollView>;
+    }
+
+    renderTopNavigation = () => {
+        return <BottomNavigation
+            active={this.state.active}
+            hidden={this.state.bottomHidden}
+            style={{container: {position: 'absolute', top: 0, left: 0, right: 0}}}
+        >
+            <BottomNavigation.Action
+                key="myProfile"
+                icon={<Icon name="person"/>}
+                label="MY PROFILE"
+                onPress={() => this.setState({active: 'myProfile'})}
+            />
+            <BottomNavigation.Action
+                key="people"
+                icon="people"
+                label="HEY, MAMA!"
+                onPress={() => this.setState({active: 'people'})}
+            />
+            <BottomNavigation.Action
+                key="bookmark-border"
+                icon="bookmark-border"
+                label="TIMELINE"
+                onPress={() => this.setState({active: 'bookmark-border'})}
+            />
+        </BottomNavigation>;
+    }
+
     renderItem = (title, route) => {
         const searchText = this.state.searchText.toLowerCase();
 
@@ -135,7 +194,7 @@ class Home extends Component {
         return (
             <ListItem
                 divider
-                leftElement={<Avatar text={title[0]} />}
+                leftElement={<Avatar text={title[0]}/>}
                 onLeftElementPress={() => this.onAvatarPressed(title)}
                 centerElement={title}
                 onPress={() => this.props.navigation.navigate(route)}
@@ -143,82 +202,65 @@ class Home extends Component {
 
         );
     }
+
     render() {
-        return (
-            <Container>
-                {this.renderToolbar()}
-                <ScrollView
-                    keyboardShouldPersistTaps="always"
-                    keyboardDismissMode="interactive"
-                    onScroll={this.onScroll}
-                >
-                    {this.renderItem('Action buttons', 'actionButton')}
-                    {this.renderItem('Avatars', 'avatar')}
-                    {this.renderItem('Badge', 'badge')}
-                    {this.renderItem('Bottom navigation', 'bottomNavigation')}
-                    {this.renderItem('Buttons', 'button')}
-                    {this.renderItem('Cards', 'card')}
-                    {this.renderItem('Checkbox', 'checkbox')}
-                    {this.renderItem('Dialog', 'dialog')}
-                    {this.renderItem('Drawer', 'drawer')}
-                    {this.renderItem('Icon toggles', 'iconToggle')}
-                    {this.renderItem('List items', 'list')}
-                    {this.renderItem('Radio buttons', 'radioButton')}
-                    {this.renderItem('Toolbars', 'toolbar')}
-                </ScrollView>
-                <ActionButton
-                    actions={[
-                        { icon: 'email', label: 'Email' },
-                        { icon: 'phone', label: 'Phone' },
-                        { icon: 'sms', label: 'Text' },
-                        { icon: 'favorite', label: 'Favorite' },
-                    ]}
-                    hidden={this.state.bottomHidden}
-                    icon="share"
-                    transition="speedDial"
-                    onPress={(action) => {
-                        if (Platform.OS === 'android') {
-                            ToastAndroid.show(action, ToastAndroid.SHORT);
-                        }
-                    }}
-                    style={{
-                        positionContainer: { bottom: 76 },
-                    }}
-                />
-                <BottomNavigation
-                    active={this.state.active}
-                    hidden={this.state.bottomHidden}
-                    style={{ container: { position: 'absolute', bottom: 0, left: 0, right: 0 } }}
-                >
-                    <BottomNavigation.Action
-                        key="today"
-                        icon={<Icon name="today" />}
-                        label="Today"
-                        onPress={() => this.setState({ active: 'today' })}
+        if (this.state.active === 'people') {
+            return (
+                <Container>
+                    {this.renderToolbar()}
+                    {this.renderAllTheMamas()}
+                    {this.renderTopNavigation()}
+                </Container>
+            )
+        }
+        else
+            return (
+                <Container>
+                    {this.renderToolbar()}
+                    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+                        <Icon name={this.state.active} size={54}/>
+                    </View>
+                    <ProfileView />
+                    <ScrollView
+                        keyboardShouldPersistTaps="always"
+                        keyboardDismissMode="interactive"
+                        onScroll={this.onScroll}
+                    >
+                        {this.renderItem('Mom1', 'actionButton')}
+                        {this.renderItem('Mom1', 'avatar')}
+                        {this.renderItem('Mom1', 'badge')}
+                        {this.renderItem('Mom1', 'bottomNavigation')}
+                        {this.renderItem('Mom1', 'button')}
+                        {this.renderItem('Mom1', 'card')}
+                        {this.renderItem('Mom1', 'checkbox')}
+                        {this.renderItem('Mom1', 'dialog')}
+                        {this.renderItem('Mom1', 'drawer')}
+                        {this.renderItem('Mom1', 'iconToggle')}
+                        {this.renderItem('Mom1', 'list')}
+                        {this.renderItem('Mom1', 'radioButton')}
+                        {this.renderItem('Mom1', 'toolbar')}
+                    </ScrollView>
+                    <ActionButton
+                        actions={[
+                            {icon: 'share', label: 'Share'},
+                        ]}
+                        hidden={this.state.bottomHidden}
+                        icon="share"
+                        transition="speedDial"
+                        onPress={(action) => {
+                            if (Platform.OS === 'android') {
+                                ToastAndroid.show(action, ToastAndroid.SHORT);
+                            }
+                        }}
+                        style={{
+                            positionContainer: {bottom: 76},
+                        }}
                     />
-                    <BottomNavigation.Action
-                        key="people"
-                        icon="people"
-                        label="People"
-                        onPress={() => this.setState({ active: 'people' })}
-                    />
-                    <BottomNavigation.Action
-                        key="bookmark-border"
-                        icon="bookmark-border"
-                        label="Bookmark"
-                        onPress={() => this.setState({ active: 'bookmark-border' })}
-                    />
-                    <BottomNavigation.Action
-                        key="settings"
-                        icon="settings"
-                        label="Settings"
-                        onPress={() => this.setState({ active: 'settings' })}
-                    />
-                </BottomNavigation>
-            </Container>
+                    {this.renderTopNavigation()}
+                </Container>
 
 
-        );
+            );
     }
 }
 

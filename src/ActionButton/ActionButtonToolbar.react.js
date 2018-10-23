@@ -17,7 +17,7 @@ class ActionButtonSpec extends Component {
                 <Toolbar
                     leftElement="arrow-back"
                     onLeftElementPress={() => this.props.navigation.goBack()}
-                    centerElement="Action button - toolbar"
+                    centerElement="It is a mama profile"
                 />
                 <ActionButton
                     actions={['email', 'phone', 'sms', 'favorite']}

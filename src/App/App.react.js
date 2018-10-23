@@ -9,7 +9,7 @@ const UIManager = NativeModules.UIManager;
 
 const uiTheme = {
     palette: {
-        primaryColor: COLOR.green500,
+        primaryColor: COLOR.purple500,
         accentColor: COLOR.pink500,
     },
 };
