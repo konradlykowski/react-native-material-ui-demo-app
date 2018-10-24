@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import contactData from './contact.json'
+import contactData from '../Entities/Profile.json'
 
 import Profile from './Profile'
 

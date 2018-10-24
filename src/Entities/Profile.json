@@ -1,0 +1,38 @@
+{
+  "id": "1",
+  "name": "Aga",
+  "last_name": "Aga",
+  "location": "Tokyo",
+  "age": 28,
+  "tags": [
+    "Wine",
+    "Vodka",
+    "Sake"
+  ],
+  "children_number": 111,
+  "address": {
+    "area": "Setagaya-ku",
+    "city": "Tokyo",
+    "country": "Japan",
+    "geo": {
+      "lat": "-75.8513",
+      "lng": "81.3262"
+    }
+  },
+  "tels": [
+    {
+      "id": 1,
+      "name": "Mobile",
+      "number": "+66 (089)-928-2134"
+    }
+  ],
+  "emails": [
+    {
+      "id": 1,
+      "name": "Personal",
+      "email": "elsie-goodman@mail.com"
+    }
+  ],
+  "avatar": "https://cdn.thinglink.me/api/image/977819436201279491/1240/10/scaletowidth",
+  "avatarBackground": "https://cdn.thinglink.me/api/image/977819436201279491/1240/10/scaletowidth"
+}
