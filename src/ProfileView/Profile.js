@@ -265,6 +265,7 @@ class Contact extends Component {
                     </Card>
                 </View>
             </ScrollView>
+
         )
     }
 }

@@ -6,6 +6,8 @@ import Container from '../Container';
 // components
 import {Avatar, BottomNavigation, Icon, ListItem, Toolbar,} from '../react-native-material-ui/src';
 import ProfileScreen from "../ProfileView";
+import ActionButton from "../react-native-material-ui/src/ActionButton/ActionButton.react";
+import {purple500} from "../react-native-material-ui/src/styles/colors";
 
 const UP = 1;
 const DOWN = -1;
@@ -64,9 +66,7 @@ class Home extends Component {
         if (this.scrollDirection !== currentDirection) {
             this.scrollDirection = currentDirection;
 
-            this.setState({
-                bottomHidden: currentDirection === UP,
-            });
+ 
         }
     }
     show = () => {
@@ -144,7 +144,6 @@ class Home extends Component {
             {this.renderItem('Mom1', 'actionButton')}
 
 
-
         </ScrollView>;
     }
 
@@ -198,7 +197,6 @@ class Home extends Component {
         if (this.state.active === 'people') {
             return (
                 <Container>
-                    {this.renderToolbar()}
                     {this.renderAllTheMamas()}
                     {this.renderTopNavigation()}
                 </Container>
@@ -208,10 +206,22 @@ class Home extends Component {
             return (
                 <Container>
                     {this.renderToolbar()}
-
-                    <ProfileScreen />
-
+                    <ProfileScreen/>
                     {this.renderTopNavigation()}
+                    <ActionButton
+                        actions={[
+                            {icon: 'email', label: 'Email'},
+                            {icon: 'phone', label: 'Phone'},
+                            {icon: 'sms', label: 'Text'},
+                            {icon: 'favorite', label: 'Favorite'},
+                        ]}
+                        hidden={this.state.bottomHidden}
+                        icon="search"
+                        transition="speedDial"
+                        style={{
+                            positionContainer: {top: 76}
+                        }}
+                    />
                 </Container>
 
 
