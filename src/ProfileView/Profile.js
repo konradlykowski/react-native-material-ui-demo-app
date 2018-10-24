@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { Card, Icon } from 'react-native-elements'
+import React, {Component} from 'react'
+import {Card, Icon} from 'react-native-elements'
 import {
     Image,
     ImageBackground,
@@ -18,6 +18,7 @@ import mainColor from './constants'
 import Email from './Email'
 import Separator from './Separator'
 import Tel from './Tel'
+import Button from "../react-native-material-ui/src/Button/Button.react";
 
 const styles = StyleSheet.create({
     cardContainer: {
@@ -118,9 +119,16 @@ class Contact extends Component {
                 number: PropTypes.string.isRequired,
             })
         ).isRequired,
+        tags: PropTypes.arrayOf(
+            PropTypes.shape({
+                name: PropTypes.string.isRequired,
+                icon: PropTypes.string.isRequired,
+            })
+        ),
     }
 
     state = {
+        tags: this.props.tags,
         telDS: new ListView.DataSource({
             rowHasChanged: (r1, r2) => r1 !== r2,
         }).cloneWithRows(this.props.tels),
@@ -129,7 +137,9 @@ class Contact extends Component {
         }).cloneWithRows(this.props.emails),
     }
 
+
     onPressPlace = () => {
+        alert(this.state.tags.forEach(() => console.log('place')))
         console.log('place')
     }
 
@@ -152,7 +162,7 @@ class Contact extends Component {
             avatar,
             avatarBackground,
             name,
-            address: { city, country },
+            address: {city, country},
         } = this.props
 
         return (
@@ -164,6 +174,7 @@ class Contact extends Component {
                         uri: avatarBackground,
                     }}
                 >
+
                     <View style={styles.headerColumn}>
                         <Image
                             style={styles.userImage}
@@ -186,18 +197,22 @@ class Contact extends Component {
                                     {city}, {country}
                                 </Text>
                             </View>
+
                         </View>
+
+                        {this.renderTags()}
                     </View>
                 </ImageBackground>
             </View>
         )
     }
 
+
     renderTel = () => (
         <ListView
             contentContainerStyle={styles.telContainer}
             dataSource={this.state.telDS}
-            renderRow={({ id, name, number }, _, k) => {
+            renderRow={({id, name, number}, _, k) => {
                 return (
                     <Tel
                         key={`tel-${id}`}
@@ -216,7 +231,7 @@ class Contact extends Component {
         <ListView
             contentContainerStyle={styles.emailContainer}
             dataSource={this.state.emailDS}
-            renderRow={({ email, id, name }, _, k) => {
+            renderRow={({email, id, name}, _, k) => {
                 return (
                     <Email
                         key={`email-${id}`}
@@ -230,7 +245,24 @@ class Contact extends Component {
         />
     )
 
+    renderTags = () => (
+        <View style={{flex: 1, flexDirection: 'row'}}>
+
+            {this.state.tags.map((key) => {
+                return (
+                    <Image
+                        style={{width: 50, height: 50}}
+                        source={{uri: key.icon}}
+                    />
+                );
+            })}
+
+        </View>
+    )
+
     render() {
+
+
         return (
             <ScrollView style={styles.scroll}>
                 <View style={styles.container}>

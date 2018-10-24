@@ -4,11 +4,7 @@
   "last_name": "Aga",
   "location": "Tokyo",
   "age": 28,
-  "tags": [
-    "Wine",
-    "Vodka",
-    "Sake"
-  ],
+
   "children_number": 111,
   "address": {
     "area": "Setagaya-ku",
@@ -33,6 +29,36 @@
       "email": "elsie-goodman@mail.com"
     }
   ],
-  "avatar": "https://cdn.thinglink.me/api/image/977819436201279491/1240/10/scaletowidth",
-  "avatarBackground": "https://cdn.thinglink.me/api/image/977819436201279491/1240/10/scaletowidth"
+  "tags": [
+    {
+      "name": "1",
+      "icon": "https://cdn0.iconfinder.com/data/icons/small-baby-set/200/babydress-512.png"
+    },
+    {
+      "name": "2",
+      "icon": "https://cdn4.iconfinder.com/data/icons/kids-2/128/kids_bear-512.png"
+    },
+    {
+      "name": "3",
+      "icon": "https://cdn0.iconfinder.com/data/icons/small-baby-set/200/baby-512.png"
+    },
+    {
+      "name": "4",
+      "icon": "https://cdn0.iconfinder.com/data/icons/small-baby-set/200/babygirl-512.png"
+    },
+    {
+      "name": "5",
+      "icon": "https://cdn4.iconfinder.com/data/icons/baby-44/64/BABY_4-05-512.png"
+    },
+    {
+      "name": "6",
+      "icon": "https://cdn1.iconfinder.com/data/icons/flat-christmas-icons-1/75/_santa_claus-512.png"
+    },
+    {
+      "name": "7",
+      "icon": "https://cdn2.iconfinder.com/data/icons/merry-christmas-22/64/Christmas-10-512.png"
+    }
+  ],
+  "avatar": "https://images.unsplash.com/photo-1488062068396-db167dcec023?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d8960ab7cb2dccc5d606150f89a5e472&auto=format&fit=crop&w=800&q=60",
+  "avatarBackground": "http://geographical.co.uk/media/k2/items/cache/d0d5caef53a97465ee5797663b3cd459_XL.jpg"
 }
