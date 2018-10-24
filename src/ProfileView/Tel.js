@@ -1,9 +1,9 @@
 import React from 'react'
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import { Icon } from 'react-native-elements'
-import PropTypes from 'prop-types'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Icon } from 'react-native-elements';
+import PropTypes from 'prop-types';
 
-import mainColor from './constants'
+import mainColor from './constants';
 
 const styles = StyleSheet.create({
     container: {
