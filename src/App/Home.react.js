@@ -10,6 +10,7 @@ import ProfileScreen from "../ProfileView";
 import ActionButton from "../react-native-material-ui/src/ActionButton/ActionButton.react";
 import {purple500} from "../react-native-material-ui/src/styles/colors";
 import EventTimeLine from "../Listview";
+import TabViewExample from "../TabViewExample";
 
 const UP = 1;
 const DOWN = -1;
@@ -208,7 +209,7 @@ class Home extends Component {
         if (this.state.active === 'bookmark-border') {
             return (<Container>
                 {this.renderTopNavigation()}
-                <EventTimeLine/>
+                <TabViewExample/>
             </Container>)
         }
         else
