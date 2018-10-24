@@ -1,55 +1,19 @@
-import {StyleSheet, View} from 'react-native';
-import React, {Component} from 'react';
-import {PropTypes} from 'prop-types';
 
-import {Button, Subheader, Toolbar} from '../react-native-material-ui';
-import Container from '../Container';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-const styles = StyleSheet.create({
-    rowContainer: {
-        margin: 8,
-        flexDirection: 'row',
-        justifyContent: 'center',
-    },
-    button: {
-        marginHorizontal: 8,
-    },
-});
+import contactData from './contact.json'
 
-const propTypes = {
-    navigation: PropTypes.shape({
-        goBack: PropTypes.func.isRequired,
-    }).isRequired,
-};
+import Profile from './Profile'
 
-class ProfileView extends Component {
-    constructor(props) {
-        super(props);
-        alert(props);
-    }
+const ProfileScreen = () => <Profile {...contactData} />
 
-    render() {
-        return (
-            <Container>
-                <Toolbar
-                    leftElement="arrow-back"
-                    onLeftElementPress={() => this.props.navigation.goBack()}
-                    centerElement="Button"
-                />
-                <Subheader text="Flat buttons"/>
-                <View style={styles.rowContainer}>
-                    <View style={styles.button}>
-                        <Button primary text="Primary"/>
-                    </View>
-                    <View style={styles.button}>
-                        <Button accent text="Accent"/>
-                    </View>
-                </View>
+ProfileScreen.navigationOptions = () => ({
+    header: null,
+})
 
-            </Container>
-        );
-    }
+ProfileScreen.propTypes = {
+    navigation: PropTypes.object.isRequired,
 }
 
-
-export default ProfileView;
+export default ProfileScreen

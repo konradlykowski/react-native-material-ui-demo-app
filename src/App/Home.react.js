@@ -1,20 +1,11 @@
 import React, {Component} from 'react';
 import {PropTypes} from 'prop-types';
-import {ToastAndroid, ScrollView, Platform, Animated, Easing, View} from 'react-native';
-
-import routes from '../routes';
+import {Animated, Easing, Platform, ScrollView} from 'react-native';
 
 import Container from '../Container';
 // components
-import {
-    ActionButton,
-    Avatar,
-    ListItem,
-    Toolbar,
-    BottomNavigation,
-    Icon,
-} from '../react-native-material-ui/src';
-import ProfileView from "../ProfileView";
+import {Avatar, BottomNavigation, Icon, ListItem, Toolbar,} from '../react-native-material-ui/src';
+import ProfileScreen from "../ProfileView";
 
 const UP = 1;
 const DOWN = -1;
@@ -217,45 +208,9 @@ class Home extends Component {
             return (
                 <Container>
                     {this.renderToolbar()}
-                    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-                        <Icon name={this.state.active} size={54}/>
-                    </View>
-                    <ProfileView />
-                    <ScrollView
-                        keyboardShouldPersistTaps="always"
-                        keyboardDismissMode="interactive"
-                        onScroll={this.onScroll}
-                    >
-                        {this.renderItem('Mom1', 'actionButton')}
-                        {this.renderItem('Mom1', 'avatar')}
-                        {this.renderItem('Mom1', 'badge')}
-                        {this.renderItem('Mom1', 'bottomNavigation')}
-                        {this.renderItem('Mom1', 'button')}
-                        {this.renderItem('Mom1', 'card')}
-                        {this.renderItem('Mom1', 'checkbox')}
-                        {this.renderItem('Mom1', 'dialog')}
-                        {this.renderItem('Mom1', 'drawer')}
-                        {this.renderItem('Mom1', 'iconToggle')}
-                        {this.renderItem('Mom1', 'list')}
-                        {this.renderItem('Mom1', 'radioButton')}
-                        {this.renderItem('Mom1', 'toolbar')}
-                    </ScrollView>
-                    <ActionButton
-                        actions={[
-                            {icon: 'share', label: 'Share'},
-                        ]}
-                        hidden={this.state.bottomHidden}
-                        icon="share"
-                        transition="speedDial"
-                        onPress={(action) => {
-                            if (Platform.OS === 'android') {
-                                ToastAndroid.show(action, ToastAndroid.SHORT);
-                            }
-                        }}
-                        style={{
-                            positionContainer: {bottom: 76},
-                        }}
-                    />
+
+                    <ProfileScreen />
+
                     {this.renderTopNavigation()}
                 </Container>
 
