@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {PropTypes} from 'prop-types';
 import {Animated, Easing, Platform, ScrollView} from 'react-native';
+import Timeline from 'react-native-timeline-listview'
 
 import Container from '../Container';
 // components
@@ -8,6 +9,7 @@ import {Avatar, BottomNavigation, Icon, ListItem, Toolbar,} from '../react-nativ
 import ProfileScreen from "../ProfileView";
 import ActionButton from "../react-native-material-ui/src/ActionButton/ActionButton.react";
 import {purple500} from "../react-native-material-ui/src/styles/colors";
+import Example from "../Listview";
 
 const UP = 1;
 const DOWN = -1;
@@ -66,7 +68,7 @@ class Home extends Component {
         if (this.scrollDirection !== currentDirection) {
             this.scrollDirection = currentDirection;
 
- 
+
         }
     }
     show = () => {
@@ -193,6 +195,7 @@ class Home extends Component {
         );
     }
 
+
     render() {
         if (this.state.active === 'people') {
             return (
@@ -201,6 +204,12 @@ class Home extends Component {
                     {this.renderTopNavigation()}
                 </Container>
             )
+        }
+        if (this.state.active === 'bookmark-border') {
+            return (<Container>
+                {this.renderTopNavigation()}
+                <Example/>
+            </Container>)
         }
         else
             return (
