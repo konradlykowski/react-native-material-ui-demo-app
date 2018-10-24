@@ -1,16 +1,6 @@
 import React, {Component} from 'react'
 import {Card, Icon} from 'react-native-elements'
-import {
-    Image,
-    ImageBackground,
-    Linking,
-    ListView,
-    Platform,
-    ScrollView,
-    StyleSheet,
-    Text,
-    View,
-} from 'react-native'
+import {Image, ImageBackground, Linking, ListView, Platform, ScrollView, StyleSheet, Text, View,} from 'react-native'
 import PropTypes from 'prop-types'
 
 import mainColor from './constants'
@@ -18,7 +8,15 @@ import mainColor from './constants'
 import Email from './Email'
 import Separator from './Separator'
 import Tel from './Tel'
-import Button from "../react-native-material-ui/src/Button/Button.react";
+
+const about_styles = StyleSheet.create({
+    titleText: {
+        marginTop: 10,
+        marginLeft: 20,
+        marginRight: 20,
+        fontSize: 20,
+    },
+});
 
 const styles = StyleSheet.create({
     cardContainer: {
@@ -74,7 +72,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'transparent',
     },
     userCityText: {
-        color: '#A5A5A5',
+        color: '#FFF',
         fontSize: 15,
         fontWeight: '600',
         textAlign: 'center',
@@ -98,13 +96,6 @@ const styles = StyleSheet.create({
 
 class Contact extends Component {
     static propTypes = {
-        avatar: PropTypes.string.isRequired,
-        avatarBackground: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
-        address: PropTypes.shape({
-            city: PropTypes.string.isRequired,
-            country: PropTypes.string.isRequired,
-        }).isRequired,
         emails: PropTypes.arrayOf(
             PropTypes.shape({
                 email: PropTypes.string.isRequired,
@@ -121,13 +112,14 @@ class Contact extends Component {
         ).isRequired,
         tags: PropTypes.arrayOf(
             PropTypes.shape({
-                name: PropTypes.string.isRequired,
+                id: PropTypes.string.isRequired,
                 icon: PropTypes.string.isRequired,
             })
         ),
     }
 
     state = {
+        about: this.props.about,
         tags: this.props.tags,
         telDS: new ListView.DataSource({
             rowHasChanged: (r1, r2) => r1 !== r2,
@@ -174,7 +166,6 @@ class Contact extends Component {
                         uri: avatarBackground,
                     }}
                 >
-
                     <View style={styles.headerColumn}>
                         <Image
                             style={styles.userImage}
@@ -251,6 +242,7 @@ class Contact extends Component {
             {this.state.tags.map((key) => {
                 return (
                     <Image
+                        key={key.id}
                         style={{width: 50, height: 50}}
                         source={{uri: key.icon}}
                     />
@@ -261,13 +253,12 @@ class Contact extends Component {
     )
 
     render() {
-
-
         return (
             <ScrollView style={styles.scroll}>
                 <View style={styles.container}>
                     <Card containerStyle={styles.cardContainer}>
                         {this.renderHeader()}
+                        <Text style={about_styles.titleText}>{this.state.about}</Text>
                         {this.renderTel()}
                         {Separator()}
                         {this.renderEmail()}

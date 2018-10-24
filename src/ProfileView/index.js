@@ -1,6 +1,4 @@
-
 import React from 'react'
-import PropTypes from 'prop-types'
 
 import contactData from '../Entities/Profile.json'
 
@@ -13,7 +11,6 @@ ProfileScreen.navigationOptions = () => ({
 })
 
 ProfileScreen.propTypes = {
-    navigation: PropTypes.object.isRequired,
 }
 
 export default ProfileScreen

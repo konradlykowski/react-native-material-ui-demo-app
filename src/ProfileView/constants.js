@@ -1,3 +1,3 @@
-const mainColor = '#01C89E'
+const mainColor = 'purple'
 
 export default mainColor
