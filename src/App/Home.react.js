@@ -9,7 +9,7 @@ import {Avatar, BottomNavigation, Icon, ListItem, Toolbar,} from '../react-nativ
 import ProfileScreen from "../ProfileView";
 import ActionButton from "../react-native-material-ui/src/ActionButton/ActionButton.react";
 import {purple500} from "../react-native-material-ui/src/styles/colors";
-import Example from "../Listview";
+import EventTimeLine from "../Listview";
 
 const UP = 1;
 const DOWN = -1;
@@ -208,7 +208,7 @@ class Home extends Component {
         if (this.state.active === 'bookmark-border') {
             return (<Container>
                 {this.renderTopNavigation()}
-                <Example/>
+                <EventTimeLine/>
             </Container>)
         }
         else

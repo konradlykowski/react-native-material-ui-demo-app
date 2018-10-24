@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 import Timeline from 'react-native-timeline-listview'
 
-export default class Example extends Component {
+export default class EventTimeLine extends Component {
     constructor(){
         super()
         this.onEventPress = this.onEventPress.bind(this)
