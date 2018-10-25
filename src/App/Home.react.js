@@ -112,7 +112,6 @@ class Home extends Component {
                 onLeftElementPress={() => this.props.navigation.goBack()}
                 centerElement="Hello, Super Mama!"
                 searchable={{
-
                     autoFocus: true,
                     placeholder: 'Talk to Super Mama...',
                     onChangeText: value => this.setState({searchText: value}),
