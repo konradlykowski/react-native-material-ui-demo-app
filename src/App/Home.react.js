@@ -9,6 +9,7 @@ import ProfileScreen from "../ProfileView";
 import ActionButton from "../react-native-material-ui/src/ActionButton/ActionButton.react";
 import {purple500} from "../react-native-material-ui/src/styles/colors";
 import UnderlineTabBarExample from "../TabViewExample";
+import ChatView from "../Chat"
 
 const UP = 1;
 const DOWN = -1;
@@ -199,7 +200,7 @@ class Home extends Component {
         if (this.state.active === 'people') {
             return (
                 <Container>
-                    {this.renderAllTheMamas()}
+                    <ChatView/>
                     {this.renderTopNavigation()}
                 </Container>
             )
