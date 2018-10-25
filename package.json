@@ -26,6 +26,7 @@
     "react": "16.0.0",
     "react-native": "0.50.4",
     "react-native-elements": "^0.19.1",
+    "react-native-gifted-chat": "^0.4.3",
     "react-native-material-design-styles": "^0.2.6",
     "react-native-scrollable-tab-view": "^0.8.0",
     "react-native-tab-view": "^1.2.0",
