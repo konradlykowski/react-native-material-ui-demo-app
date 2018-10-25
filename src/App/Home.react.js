@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {PropTypes} from 'prop-types';
 import {Animated, Easing, Platform, ScrollView} from 'react-native';
-import Timeline from 'react-native-timeline-listview'
 
 import Container from '../Container';
 // components
@@ -9,8 +8,7 @@ import {Avatar, BottomNavigation, Icon, ListItem, Toolbar,} from '../react-nativ
 import ProfileScreen from "../ProfileView";
 import ActionButton from "../react-native-material-ui/src/ActionButton/ActionButton.react";
 import {purple500} from "../react-native-material-ui/src/styles/colors";
-import EventTimeLine from "../Listview";
-import TabViewExample from "../TabViewExample";
+import UnderlineTabBarExample from "../TabViewExample";
 
 const UP = 1;
 const DOWN = -1;
@@ -209,7 +207,7 @@ class Home extends Component {
         if (this.state.active === 'bookmark-border') {
             return (<Container>
                 {this.renderTopNavigation()}
-                <TabViewExample/>
+                <UnderlineTabBarExample/>
             </Container>)
         }
         else
@@ -218,20 +216,6 @@ class Home extends Component {
                     {this.renderToolbar()}
                     <ProfileScreen/>
                     {this.renderTopNavigation()}
-                    <ActionButton
-                        actions={[
-                            {icon: 'email', label: 'Email'},
-                            {icon: 'phone', label: 'Phone'},
-                            {icon: 'sms', label: 'Text'},
-                            {icon: 'favorite', label: 'Favorite'},
-                        ]}
-                        hidden={this.state.bottomHidden}
-                        icon="search"
-                        transition="speedDial"
-                        style={{
-                            positionContainer: {top: 76}
-                        }}
-                    />
                 </Container>
 
 

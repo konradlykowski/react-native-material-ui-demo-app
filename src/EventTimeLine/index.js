@@ -81,7 +81,7 @@ export default class EventTimeLine extends Component {
             }
             ,
             {
-                time: '20:30',
+                time: '22:30',
                 title: 'Go to Fitness center',
                 description: 'Look out for the Best Gym & Fitness Centers around me :)',
                 icon: require('../Icons/5.png'),
@@ -114,7 +114,7 @@ export default class EventTimeLine extends Component {
                     timeContainerStyle={{minWidth: 52, marginTop: -5}}
                     timeStyle={{
                         textAlign: 'center',
-                        backgroundColor: '#ff9797',
+                        backgroundColor: '#9c27b0',
                         color: 'white',
                         padding: 5,
                         borderRadius: 13
