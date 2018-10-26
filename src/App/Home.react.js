@@ -11,6 +11,8 @@ import {purple500} from "../react-native-material-ui/src/styles/colors";
 import UnderlineTabBarExample from "../TabViewExample";
 import ChatView from "../Chat"
 
+
+
 const UP = 1;
 const DOWN = -1;
 
