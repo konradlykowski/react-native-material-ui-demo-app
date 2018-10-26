@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {PropTypes} from 'prop-types';
-import {Animated, Easing, Platform, ScrollView} from 'react-native';
+import {Animated, Easing, Platform, ScrollView, Image} from 'react-native';
 
 import Container from '../Container';
 // components
@@ -32,6 +32,9 @@ class Home extends Component {
 
         this.offset = 0;
         this.scrollDirection = 0;
+        // Very Bad practice but I don't care
+        this.false =  false;
+        this.true = true;
 
         this.state = {
             selected: [],
@@ -129,10 +132,11 @@ class Home extends Component {
     renderAllTheMamas = () => {
         /*
         BUG: first Item is covered up by the topnavigator thingy
+        Object.keys(WholeData).length-1
         */
         var hugeList = []
-        for (var i = 0; i < Object.keys(WholeData).length-1; i++) {
-            hugeList.push(this.renderItem(WholeData[i], 'actionButton'))
+        for (var i = 0; i < 30; i++) {
+            hugeList.push(this.renderItem(WholeData[i%11], 'actionButton'))
         }
 
         return (
@@ -181,9 +185,9 @@ class Home extends Component {
         }
 
         return (
-            <ListItem
+            <ListItem dense={this.false}
                 divider
-                leftElement={<Avatar text={props.name[0]}/>}
+                leftElement={<Avatar image={props.avatar}/>}
                 onLeftElementPress={() => this.onAvatarPressed(props.name)}
                 centerElement={props.name}
                 onPress={() => this.props.navigation.navigate(route)}
