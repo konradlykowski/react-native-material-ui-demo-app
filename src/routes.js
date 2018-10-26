@@ -42,7 +42,7 @@ const AppNavigator = StackNavigator({
     radioButton: { screen: RadioButton },
     toolbar: { screen: Toolbar },
     chatView: { screen: ChatView },
-    profile: { screen: Profile }
+    profile: { screen: ProfileScreen }
 }, {
     headerMode: 'none',
 });
