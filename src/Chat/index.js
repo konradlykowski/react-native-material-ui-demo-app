@@ -62,6 +62,11 @@ class ChatView extends React.Component {
         return (
             <Container>
 
+                <Toolbar
+                    leftElement="arrow-back"
+                    onLeftElementPress={() => this.props.navigation.goBack()}
+                    centerElement="Agatha Cristie's Profile"
+                />
                 <GiftedChat
                     messages={this.state.messages}
                     onSend={messages => this.onSend(messages)}
@@ -70,11 +75,6 @@ class ChatView extends React.Component {
                     }}
                 />
 
-                <Toolbar
-                    leftElement="arrow-back"
-                    onLeftElementPress={() => this.props.navigation.goBack()}
-                    centerElement="Button"
-                />
             </Container>
         );
     }

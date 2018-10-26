@@ -135,18 +135,10 @@ class Home extends Component {
             {this.renderItem('Mom1', 'profile')}
             {this.renderItem('Mom1', 'profile')}
             {this.renderItem('Mom1', 'profile')}
-            {this.renderItem('Mom1', 'ProfileView')}
-            {this.renderItem('Mom1', 'ProfileView')}
-            {this.renderItem('Mom1', 'ProfileView')}
-            {this.renderItem('Mom1', 'actionButton')}
-            {this.renderItem('Mom1', 'actionButton')}
-            {this.renderItem('Mom1', 'actionButton')}
-            {this.renderItem('Mom1', 'actionButton')}
-            {this.renderItem('Mom1', 'actionButton')}
-            {this.renderItem('Mom1', 'actionButton')}
-            {this.renderItem('Mom1', 'actionButton')}
-            {this.renderItem('Mom1', 'actionButton')}
-            {this.renderItem('Mom1', 'actionButton')}
+            {this.renderItem('Mom1', 'profile')}
+            {this.renderItem('Mom1', 'profile')}
+            {this.renderItem('Mom1', 'chatView')}
+
 
 
         </ScrollView>;

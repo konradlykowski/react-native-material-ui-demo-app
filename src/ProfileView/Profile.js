@@ -163,8 +163,7 @@ class Contact extends Component {
     };
 
     onPressSms = () => {
-
-        () => this.props.navigation.navigate(route);
+        this.props.navigation.navigate("chatView");
     };
 
     onPressEmail = email => {
@@ -308,7 +307,7 @@ class Contact extends Component {
                 leftElement={<Avatar text={title[0]}/>}
                 onLeftElementPress={() => this.onAvatarPressed(title)}
                 centerElement={title}
-                onPress={() => this.props.navigation.navigate(route)}
+                onPress={() => alert("CZesc")}
             />
 
         );
