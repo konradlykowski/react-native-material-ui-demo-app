@@ -5,7 +5,6 @@ import { Icon } from 'react-native-elements';
 import PropTypes from 'prop-types';
 
 import mainColor from './constants';
-import { purple500 } from '../react-native-material-ui/src/styles/colors';
 
 const styles = StyleSheet.create({
     container: {
@@ -18,7 +17,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     smsIcon: {
-        color: purple500,
+        color: 'gray',
         fontSize: 30,
     },
     smsRow: {

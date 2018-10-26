@@ -17,6 +17,12 @@ import IconToggle from './IconToggle';
 import List from './List';
 import RadioButton from './RadioButton';
 import Toolbar from './Toolbars';
+import ChatView from './Chat';
+
+import contactData from './Entities/Profile';
+import React from 'react';
+import Profile from './ProfileView/Profile';
+import ProfileScreen from './ProfileView';
 
 const AppNavigator = StackNavigator({
     home: { screen: Home },
@@ -35,6 +41,8 @@ const AppNavigator = StackNavigator({
     list: { screen: List },
     radioButton: { screen: RadioButton },
     toolbar: { screen: Toolbar },
+    chatView: { screen: ChatView },
+    profile: { screen: ProfileScreen }
 }, {
     headerMode: 'none',
 });

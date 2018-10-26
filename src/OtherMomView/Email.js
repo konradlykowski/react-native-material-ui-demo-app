@@ -1,11 +1,9 @@
-// Not sure if the user need to access her Email.
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { Icon } from 'react-native-elements'
 import PropTypes from 'prop-types'
 
 import mainColor from './constants'
-import { purple500 } from '../react-native-material-ui/src/styles/colors';
 
 const styles = StyleSheet.create({
     container: {
@@ -19,7 +17,7 @@ const styles = StyleSheet.create({
         marginBottom: 5,
     },
     emailIcon: {
-        color: purple500,
+        color: mainColor,
         fontSize: 30,
     },
     emailNameColumn: {
@@ -37,7 +35,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     emailText: {
-        color: purple500,
         fontSize: 16,
     },
     iconRow: {

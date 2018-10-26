@@ -128,9 +128,9 @@ export default class UnderlineTabBarExample extends Component {
                     )}
                     onScroll={(x) => this._scrollX.setValue(x)}
                 >
-                    <PageNews tabLabel={{label: "News"}} label="Page #1 Hot"
+                    <PageNews tabLabel={{label: "News/Events"}} label="Page #1 Hot"
                               text="You can pass your own views to TabBar!"/>
-                    <PageEvent tabLabel={{label: "Events"}} label="Page #2 Trending"
+                    <PageEvent tabLabel={{label: "BabySitting"}} label="Page #2 Trending"
                                text="Yehoo!!!"/>
                 </ScrollableTabView>
             </View>

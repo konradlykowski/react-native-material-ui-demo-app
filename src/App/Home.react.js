@@ -12,6 +12,9 @@ import ActionButton from "../react-native-material-ui/src/ActionButton/ActionBut
 import {purple500} from "../react-native-material-ui/src/styles/colors";
 import UnderlineTabBarExample from "../TabViewExample";
 import ChatView from "../Chat"
+import contactData from '../Entities/Profile.json'
+import Profile from '../ProfileView/Profile';
+
 
 const UP = 1;
 const DOWN = -1;
@@ -194,7 +197,6 @@ class Home extends Component {
         if (this.state.active === 'people') {
             return (
                 <Container>
-                    {/*<ChatView/>*/}
                     {this.renderTopNavigation()}
                     {this.renderAllTheMamas()}
                 </Container>
@@ -212,7 +214,7 @@ class Home extends Component {
             return (
                 <Container>
                     {this.renderToolbar()}
-                    <ProfileScreen/>
+                    <Profile navigation={this.props.navigation} {...contactData} />
                     {this.renderTopNavigation()}
                 </Container>
             );

@@ -1,25 +1,15 @@
-import React, { Component } from 'react';
-import { Card, Icon } from 'react-native-elements';
-import {
-    Image,
-    ImageBackground,
-    Linking,
-    ListView,
-    Platform,
-    ScrollView,
-    StyleSheet,
-    Text,
-    View,
-} from 'react-native';
-import PropTypes from 'prop-types';
+import React, {Component} from 'react'
+import {Card, Icon} from 'react-native-elements'
+import {Image, ImageBackground, Linking, ListView, Platform, ScrollView, StyleSheet, Text, View,} from 'react-native'
+import PropTypes from 'prop-types'
 
-import mainColor from './constants';
+import mainColor from './constants'
 
-import Email from './Email';
-import Separator from './Separator';
-import Tel from './Tel';
-import ChatView from '../Chat';
-import { Avatar, ListItem, Toolbar } from '../react-native-material-ui/src';
+import Email from './Email'
+import Separator from './Separator'
+import Tel from './Tel'
+import { Toolbar } from '../react-native-material-ui/src';
+import Container from '../Container';
 
 const about_styles = StyleSheet.create({
     titleText: {
@@ -29,13 +19,6 @@ const about_styles = StyleSheet.create({
         fontSize: 20,
     },
 });
-
-
-const propTypes = {
-    navigation: PropTypes.shape({
-        goBack: PropTypes.func.isRequired,
-    }).isRequired,
-};
 
 const styles = StyleSheet.create({
     cardContainer: {
@@ -111,7 +94,7 @@ const styles = StyleSheet.create({
         paddingBottom: 8,
         textAlign: 'center',
     },
-});
+})
 
 class Contact extends Component {
     static propTypes = {
@@ -135,10 +118,7 @@ class Contact extends Component {
                 icon: PropTypes.string.isRequired,
             })
         ),
-        navigation: PropTypes.shape({
-            goBack: PropTypes.func.isRequired,
-        }).isRequired
-    };
+    }
 
     state = {
         about: this.props.about,
@@ -149,37 +129,35 @@ class Contact extends Component {
         emailDS: new ListView.DataSource({
             rowHasChanged: (r1, r2) => r1 !== r2,
         }).cloneWithRows(this.props.emails),
-    };
+    }
 
 
     onPressPlace = () => {
-        alert(this.state.tags.forEach(() => console.log('place')));
-        console.log('place');
-    };
+        alert(this.state.tags.forEach(() => console.log('place')))
+        console.log('place')
+    }
 
     onPressTel = number => {
-        Linking.openURL(`tel://${number}`)
-            .catch(err => console.log('Error:', err));
-    };
+        Linking.openURL(`tel://${number}`).catch(err => console.log('Error:', err))
+    }
 
     onPressSms = () => {
-        this.props.navigation.navigate("chatView");
-    };
+        console.log('sms')
+    }
 
     onPressEmail = email => {
-        Linking.openURL(`mailto://${email}?subject=subject&body=body`)
-            .catch(err =>
-                console.log('Error:', err)
-            );
-    };
+        Linking.openURL(`mailto://${email}?subject=subject&body=body`).catch(err =>
+            console.log('Error:', err)
+        )
+    }
 
     renderHeader = () => {
         const {
             avatar,
             avatarBackground,
             name,
-            address: { city, country },
-        } = this.props;
+            address: {city, country},
+        } = this.props
 
         return (
             <View style={styles.headerContainer}>
@@ -219,15 +197,15 @@ class Contact extends Component {
                     </View>
                 </ImageBackground>
             </View>
-        );
-    };
+        )
+    }
 
 
     renderTel = () => (
         <ListView
             contentContainerStyle={styles.telContainer}
             dataSource={this.state.telDS}
-            renderRow={({ id, name, number }, _, k) => {
+            renderRow={({id, name, number}, _, k) => {
                 return (
                     <Tel
                         key={`tel-${id}`}
@@ -237,16 +215,16 @@ class Contact extends Component {
                         onPressSms={this.onPressSms}
                         onPressTel={this.onPressTel}
                     />
-                );
+                )
             }}
         />
-    );
+    )
 
     renderEmail = () => (
         <ListView
             contentContainerStyle={styles.emailContainer}
             dataSource={this.state.emailDS}
-            renderRow={({ email, id, name }, _, k) => {
+            renderRow={({email, id, name}, _, k) => {
                 return (
                     <Email
                         key={`email-${id}`}
@@ -255,84 +233,49 @@ class Contact extends Component {
                         email={email}
                         onPressEmail={this.onPressEmail}
                     />
-                );
+                )
             }}
         />
-    );
+    )
 
     renderTags = () => (
-        <View style={{
-            flex: 1,
-            flexDirection: 'row'
-        }}>
+        <View style={{flex: 1, flexDirection: 'row'}}>
 
             {this.state.tags.map((key) => {
                 return (
                     <Image
                         key={key.id}
-                        style={{
-                            width: 50,
-                            height: 50
-                        }}
-                        source={{ uri: key.icon }}
+                        style={{width: 50, height: 50}}
+                        source={{uri: key.icon}}
                     />
                 );
             })}
 
         </View>
-    );
-
-    onAvatarPressed = (value) => {
-        const { selected } = this.state;
-
-        const index = selected.indexOf(value);
-
-        if (index >= 0) {
-            // remove item
-            selected.splice(index, 1);
-        } else {
-            // add item
-            selected.push(value);
-        }
-
-        this.setState({ selected });
-    };
-
-    renderItem = (title, route) => {
-
-
-        return (
-            <ListItem
-                divider
-                leftElement={<Avatar text={title[0]}/>}
-                onLeftElementPress={() => this.onAvatarPressed(title)}
-                centerElement={title}
-                onPress={() => alert("CZesc")}
-            />
-
-        );
-    };
+    )
 
     render() {
         return (
-
-            <ScrollView style={styles.scroll}>
-                <View style={styles.container}>
-                    <Card containerStyle={styles.cardContainer}>
-                        {this.renderHeader()}
-                        <Text style={about_styles.titleText}>{this.state.about}</Text>
-                        {this.renderTel()}
-                        {Separator()}
-                        {this.renderEmail()}
-                    </Card>
-                </View>
-            </ScrollView>
-
-        );
+            <Container>
+                <Toolbar
+                    leftElement="arrow-back"
+                    onLeftElementPress={() => this.props.navigation.goBack()}
+                    centerElement="Profile"
+                />
+                <ScrollView style={styles.scroll}>
+                    <View style={styles.container}>
+                        <Card containerStyle={styles.cardContainer}>
+                            {this.renderHeader()}
+                            <Text style={about_styles.titleText}>{this.state.about}</Text>
+                            {this.renderTel()}
+                            {Separator()}
+                            {this.renderEmail()}
+                        </Card>
+                    </View>
+                </ScrollView>
+            </Container>
+        )
     }
 }
 
-Contact.propTypes = propTypes;
-
-export default Contact;
-
+export default Contact
