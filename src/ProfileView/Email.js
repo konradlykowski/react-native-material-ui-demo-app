@@ -1,3 +1,4 @@
+// Not sure if the user need to access her Email.
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { Icon } from 'react-native-elements'
