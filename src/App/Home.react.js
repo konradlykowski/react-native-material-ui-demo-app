@@ -6,6 +6,8 @@ import Container from '../Container';
 // components
 import {Avatar, BottomNavigation, Icon, ListItem, Toolbar,} from '../react-native-material-ui/src';
 import ProfileScreen from "../ProfileView";
+import * as WholeData from "../Entities/Profiles"
+
 import ActionButton from "../react-native-material-ui/src/ActionButton/ActionButton.react";
 import {purple500} from "../react-native-material-ui/src/styles/colors";
 import UnderlineTabBarExample from "../TabViewExample";
@@ -122,30 +124,23 @@ class Home extends Component {
     }
 
     renderAllTheMamas = () => {
-        return <ScrollView
-            keyboardShouldPersistTaps="always"
-            keyboardDismissMode="interactive"
-            onScroll={this.onScroll}
-        >
-            {this.renderItem('Mom1', 'actionButton')}
-            {this.renderItem('Mom1', 'actionButton')}
-            {this.renderItem('Mom1', 'actionButton')}
-            {this.renderItem('Mom1', 'actionButton')}
-            {this.renderItem('Mom1', 'actionButton')}
-            {this.renderItem('Mom1', 'actionButton')}
-            {this.renderItem('Mom1', 'actionButton')}
-            {this.renderItem('Mom1', 'actionButton')}
-            {this.renderItem('Mom1', 'actionButton')}
-            {this.renderItem('Mom1', 'actionButton')}
-            {this.renderItem('Mom1', 'actionButton')}
-            {this.renderItem('Mom1', 'actionButton')}
-            {this.renderItem('Mom1', 'actionButton')}
-            {this.renderItem('Mom1', 'actionButton')}
-            {this.renderItem('Mom1', 'actionButton')}
-            {this.renderItem('Mom1', 'actionButton')}
+        /*
+        BUG: first Item is covered up by the topnavigator thingy
+        */
+        var hugeList = []
+        for (var i = 0; i < Object.keys(WholeData).length-1; i++) {
+            hugeList.push(this.renderItem(WholeData[i], 'actionButton'))
+        }
 
-
-        </ScrollView>;
+        return (
+            <ScrollView
+                keyboardShouldPersistTaps="always"
+                keyboardDismissMode="interactive"
+                onScroll={this.onScroll}
+            >
+                {hugeList}
+            </ScrollView>
+        )
     }
 
     renderTopNavigation = () => {
@@ -175,19 +170,19 @@ class Home extends Component {
         </BottomNavigation>;
     }
 
-    renderItem = (title, route) => {
+    renderItem = (props, route) => {
         const searchText = this.state.searchText.toLowerCase();
 
-        if (searchText.length > 0 && title.toLowerCase().indexOf(searchText) < 0) {
+        if (searchText.length > 0 && props.name.toLowerCase().indexOf(searchText) < 0) {
             return null;
         }
 
         return (
             <ListItem
                 divider
-                leftElement={<Avatar text={title[0]}/>}
-                onLeftElementPress={() => this.onAvatarPressed(title)}
-                centerElement={title}
+                leftElement={<Avatar text={props.name[0]}/>}
+                onLeftElementPress={() => this.onAvatarPressed(props.name)}
+                centerElement={props.name}
                 onPress={() => this.props.navigation.navigate(route)}
             />
 
@@ -199,16 +194,19 @@ class Home extends Component {
         if (this.state.active === 'people') {
             return (
                 <Container>
-                    <ChatView/>
+                    {/*<ChatView/>*/}
                     {this.renderTopNavigation()}
+                    {this.renderAllTheMamas()}
                 </Container>
             )
         }
         if (this.state.active === 'bookmark-border') {
-            return (<Container>
-                {this.renderTopNavigation()}
-                <UnderlineTabBarExample/>
-            </Container>)
+            return (
+                <Container>
+                    {this.renderTopNavigation()}
+                    <UnderlineTabBarExample/>
+                </Container>
+            )
         }
         else
             return (
@@ -217,8 +215,6 @@ class Home extends Component {
                     <ProfileScreen/>
                     {this.renderTopNavigation()}
                 </Container>
-
-
             );
     }
 }
