@@ -1,7 +1,7 @@
 import React from 'react'
 import {Avatar, ListItem} from "../react-native-material-ui/src";
 import {ListView, ScrollView} from "react-native";
-
+import Separator from './Separator';
 class WholeList extends React.Component{
     state = {
         about: this.props.about,

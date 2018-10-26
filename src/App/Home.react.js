@@ -135,7 +135,14 @@ class Home extends Component {
         Object.keys(WholeData).length-1
         */
         var hugeList = []
-        for (var i = 0; i < 30; i++) {
+        for (var i = 0; i < 5; i++) {
+            hugeList.push(this.renderItem(WholeData[i%11], 'actionButton'))
+        }
+        hugeList.push(<ListItem
+            divider
+            centerElement={'Newest moms!'}
+        />)
+        for (var i = 0; i < 20; i++) {
             hugeList.push(this.renderItem(WholeData[i%11], 'actionButton'))
         }
 
@@ -145,6 +152,14 @@ class Home extends Component {
                 keyboardDismissMode="interactive"
                 onScroll={this.onScroll}
             >
+                <ListItem
+                    divider
+                    centerElement={'zxczxc'}
+                />
+                <ListItem
+                    divider
+                    centerElement={'Super moms near you!'}
+                />
                 {hugeList}
             </ScrollView>
         )
