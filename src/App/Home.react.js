@@ -129,21 +129,20 @@ class Home extends Component {
         );
     }
 
-    renderAllTheMamas = () => {
+    renderAllTheMamas = (n_mom) => {
         /*
         BUG: first Item is covered up by the topnavigator thingy
         Object.keys(WholeData).length-1
         */
-        var hugeList = []
-        for (var i = 0; i < 5; i++) {
-            hugeList.push(this.renderItem(WholeData[i%11], 'actionButton'))
+        const showMom = n_mom || 5
+        var nearMomList = []
+        for (var i = 0; i < showMom; i++) {
+            nearMomList.push(this.renderItem(WholeData[i%11], 'actionButton'))
         }
-        hugeList.push(<ListItem
-            divider
-            centerElement={'Newest moms!'}
-        />)
-        for (var i = 0; i < 20; i++) {
-            hugeList.push(this.renderItem(WholeData[i%11], 'actionButton'))
+
+        var newMomList = []
+        for (var i = 0; i < 3; i++) {
+            newMomList.push(this.renderItem(WholeData[i%11+7], 'actionButton'))
         }
 
         return (
@@ -154,13 +153,20 @@ class Home extends Component {
             >
                 <ListItem
                     divider
-                    centerElement={'zxczxc'}
+                    centerElement={''}
                 />
                 <ListItem
                     divider
                     centerElement={'Super moms near you!'}
+                    rightElement={'More'}
                 />
-                {hugeList}
+                {nearMomList}
+                <ListItem
+                    divider
+                    centerElement={{primaryText:'Newest moms!'}}
+                    rightElement={'+'}
+                />
+                {newMomList}
             </ScrollView>
         )
     }
@@ -204,7 +210,7 @@ class Home extends Component {
                 divider
                 leftElement={<Avatar image={props.avatar}/>}
                 onLeftElementPress={() => this.onAvatarPressed(props.name)}
-                centerElement={props.name}
+                centerElement={{primaryText:props.name, secondaryText: props.location}}
                 onPress={() => this.props.navigation.navigate(route)}
             />
 
