@@ -142,7 +142,7 @@ class Home extends Component {
 
         var newMomList = []
         for (var i = 0; i < 3; i++) {
-            newMomList.push(this.renderItem(WholeData[i%11+7], 'actionButton'))
+            newMomList.push(this.renderItem(WholeData[i%11+5], 'actionButton'))
         }
 
         return (
@@ -157,14 +157,15 @@ class Home extends Component {
                 />
                 <ListItem
                     divider
-                    centerElement={'Super moms near you!'}
-                    rightElement={'More'}
+                    //HARD CODED
+                    centerElement={'Super moms near you! (Setagaya-ku)'}
+                    // rightElement={'More'}
                 />
                 {nearMomList}
                 <ListItem
                     divider
                     centerElement={{primaryText:'Newest moms!'}}
-                    rightElement={'+'}
+                    // rightElement={'+'}
                 />
                 {newMomList}
             </ScrollView>
